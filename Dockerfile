@@ -7,4 +7,4 @@ RUN $NIK_HOME/bin/native-image --static --libc=musl -H:Class=me.koxrel.Applicati
 FROM alpine:latest
 COPY --from=builder /app/application /app/application
 ENTRYPOINT ["/app/application"]
-EXPOSE 8080
+EXPOSE 80801
