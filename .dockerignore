@@ -93,3 +93,4 @@ micronaut-cli.yml
 README.md
 Dockerfile
 .gitignore
+!build/docker/layers
