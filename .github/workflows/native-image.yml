@@ -57,4 +57,18 @@ jobs:
           push: true
           tags: |
             ${{ secrets.REGISTRY_NAME }}/micronaut-native-alpine-demo:latest
+            ${{ secrets.REGISTRY_NAME }}/micronaut-native-alpine-demo:${{ github.sha }}
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+
+      - name: DigitalOcean App Platform deployment
+        uses: digitalocean/app_action@main
+        with:
+          app_name: micronaut-native-alpine-demo
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+          images: '[
+                    {
+                      "name": "micronaut-native-alpine-demo",
+                      "repository": "${{ secrets.REGISTRY_NAME }}/micronaut-native-alpine-demo",
+                      "tag": "${{ github.sha }}"
+                    }
+                  ]'
