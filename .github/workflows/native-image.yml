@@ -1,9 +1,7 @@
-name: Build native-image and upload to DO Container Registry
+name: Build Native image, upload to DO/GH Container Registry and deploy
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
     branches: [ master ]
 
 env:
