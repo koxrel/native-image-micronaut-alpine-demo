@@ -61,6 +61,8 @@ jobs:
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
 
   deploy:
+    needs:
+      - build
     runs-on: ubuntu-latest
     steps:
       - name: DigitalOcean App Platform deployment
